@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05060a">
+<meta name="description" content="DAWOODXOWNER Premium Config Store">
+<title>DAWOODXOWNER — Ultra Premium Store</title>
+<style>
+:root{
+ --bg:#030407;--panel:#0c0f15;--panel2:#080a0f;--line:#252c37;--text:#f8fafc;
+ --muted:#8792a2;--red:#b84cff;--red2:#5b21b6;--cyan:#00e5ff;
+ --violet:#a855f7;--gold:#ffc52f;--green:#35e39a;--blue:#249df5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:#020305;color:var(--text);
+ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
+ overflow-x:hidden;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.16;
+ background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(255,255,255,.025) 4px);
+}
+body.light{
+ --bg:#f3f5f8;--panel:#fff;--panel2:#f7f8fa;--line:#dce1e8;--text:#111827;--muted:#667085;
+ background:#eef1f5;color:#111827;
+}
+body.light .wrap{background:linear-gradient(#f7f8fa,#eef1f5)}
+body.light 
+.shoutout{
+ display:inline-block;margin-top:8px;padding:5px 9px;border:1px solid #353b45;
+ border-radius:999px;background:#0b0e13;color:#737e8c;font-size:8px;font-weight:850;
+ letter-spacing:1px;box-shadow:0 0 16px #ff003c08;
+}
+.shoutout b{color:#ff6a76;text-shadow:0 0 8px #ff174033}
+.mini-strip{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;
+}
+.mini-strip span{
+ padding:8px 4px;text-align:center;border:1px solid #252b35;border-radius:10px;
+ background:#090c11;color:#77818f;font-size:7px;font-weight:900;
+}
+.quick-panel{
+ margin:22px 14px 0;padding:16px;border-radius:19px;border:1px solid #292f39;
+ background:linear-gradient(145deg,#11141a,#080a0f);box-shadow:0 16px 40px #0008;
+}
+.quick-title{font-size:10px;letter-spacing:2px;color:#ff6571;font-weight:950;margin-bottom:10px}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.quick-grid button{
+ border:1px solid #2b313b;border-radius:12px;padding:11px 5px;background:#0a0d12;color:#fff;
+}
+.quick-grid button:hover{border-color:#e52e42;box-shadow:0 0 15px #ff17331a}
+.quick-grid b{display:block;font-size:16px}.quick-grid span{display:block;margin-top:4px;font-size:8px;color:#7e8997;font-weight:900}
+.nav{background:rgba(255,255,255,.82)}
+body.light .card,body.light .checkout,body.light .faq{background:rgba(255,255,255,.9)}
+body.light .pkg,body.light input,body.light select,body.light .method,body.light .panel{background:#f7f8fa;color:#111827}
+body.light .summary{background:#fff0f2}
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.25;animation:float 11s ease-in-out infinite alternate}
+.orb.a{width:250px;height:250px;background:#ff003c;left:-100px;top:15%}
+.orb.b{width:220px;height:220px;background:#00d9ff;right:-100px;top:45%;animation-delay:-4s}
+.orb.c{width:260px;height:260px;background:#7c3aed;left:35%;bottom:-170px;animation-delay:-7s}
+.wrap{width:100%;max-width:820px;min-height:100vh;margin:auto;background:linear-gradient(180deg,#07080c,#030407 70%);position:relative}
+.header{position:relative;text-align:center;padding:28px 18px 22px;border-bottom:1px solid var(--line);overflow:hidden;background:linear-gradient(180deg,rgba(24,5,10,.95),rgba(5,6,10,.78))}
+.topline{position:absolute;left:5%;right:5%;top:10px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--red),transparent);box-shadow:0 0 12px var(--cyan),0 0 20px var(--red);animation:topscan 4s linear infinite}
+.logo{font-size:38px;font-weight:1000;letter-spacing:3px;text-shadow:0 0 8px #fff2,0 0 15px var(--red),0 0 40px #ff003c99;animation:logoPulse 3s ease-in-out infinite}
+.logo span{color:#ff3048}
+.subtitle{margin-top:7px;color:#aeb7c5;font-size:10px;letter-spacing:4px;font-weight:900}
+.status{display:inline-flex;align-items:center;gap:7px;margin-top:15px;padding:8px 13px;border:1px solid #7c202b;border-radius:999px;background:#2b070d;color:#ff7c86;font-size:10px;font-weight:900;box-shadow:0 0 25px #ff003c18}
+.status i{width:7px;height:7px;border-radius:50%;background:#ff3046;box-shadow:0 0 13px #ff3046;animation:pulse 1.2s infinite}
+.nav{position:sticky;top:0;z-index:30;display:flex;gap:6px;padding:8px 10px;background:rgba(5,6,9,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav button,.nav a{flex:1;text-align:center;padding:10px 5px;border:0;border-radius:10px;background:transparent;color:#9ca6b5;font-size:10px;font-weight:900}
+.nav button:hover,.nav a:hover{background:#171a20;color:#fff}
+.hero{padding:22px 14px 5px}
+.hero-card{position:relative;padding:24px 19px;border-radius:25px;overflow:hidden;border:1px solid #ffffff18;background:radial-gradient(circle at 100% 0,#ff003c32,transparent 38%),linear-gradient(145deg,#1c0d12,#080a0f);box-shadow:0 24px 60px #0009,inset 0 1px #fff1}
+.hero-card:before{content:"";position:absolute;inset:-2px;border-radius:27px;padding:1px;background:conic-gradient(from 0deg,transparent 0 25%,#ff1e3d 33%,transparent 44% 64%,#00e5ff 73%,transparent 83%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 7s linear infinite}
+.kicker{color:#ff6571;font-size:10px;letter-spacing:2px;font-weight:950}
+.hero-title{font-size:29px;line-height:1.08;font-weight:1000;margin-top:8px}
+.hero-title em{font-style:normal;color:#ff2943}
+.hero-desc{color:#8d97a5;font-size:12px;line-height:1.6;margin:10px 0 18px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.action{border:1px solid #343a44;border-radius:12px;padding:12px 14px;background:#11151b;color:#fff;font-weight:900;font-size:11px}
+.action.primary{border-color:#b51c2c;background:linear-gradient(90deg,#970b1a,#ff2340);box-shadow:0 0 24px #ff173522}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:11px}
+.feature{padding:11px 5px;text-align:center;border:1px solid #252b35;border-radius:13px;background:#0b0e13}
+.feature b{display:block;font-size:16px}.feature span{display:block;margin-top:4px;color:#737e8d;font-size:8px;font-weight:900}
+.offer{margin:14px 14px 3px;padding:14px;border:1px solid #55202a;border-radius:18px;background:linear-gradient(135deg,#1c080d,#0a0c11);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.offer-title{font-size:12px;font-weight:950}.offer-note{font-size:9px;color:#798392;margin-top:4px}
+.timer{display:flex;gap:5px}.time{min-width:47px;padding:7px 4px;text-align:center;border-radius:10px;background:#0c080b;border:1px solid #62222d;box-shadow:inset 0 0 14px #ff003c0d}.time b{display:block;font-size:16px}.time small{font-size:7px;color:#9da6b3;font-weight:900}
+.section{padding:22px 14px 0}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px}.section-title{font-size:21px;font-weight:950;margin:0}.tag{font-size:8px;color:#737e8d;border:1px solid #2a303a;border-radius:999px;padding:5px 8px}
+.card{position:relative;overflow:hidden;padding:18px;border-radius:22px;border:1px solid #ffffff12;background:linear-gradient(145deg,#15181f,#080a0e);box-shadow:0 18px 50px #0009,inset 0 1px #fff1}
+.card:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-65px;top:-65px;background:#ff173628;filter:blur(25px)}
+.label{color:#ff5c69;font-size:9px;letter-spacing:2px;font-weight:950}.card-title{font-size:20px;font-weight:950;margin-top:6px}.desc{color:#858f9e;font-size:11px;line-height:1.5;margin:6px 0 14px}
+.pkg{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;margin-top:8px;border-radius:14px;background:linear-gradient(90deg,#080a0e,#0d1016);border:1px solid #272d37;overflow:hidden;transition:.2s}
+.pkg:before{content:"";position:absolute;top:0;bottom:0;width:65px;left:-90px;background:linear-gradient(90deg,transparent,#fff2,transparent);transform:skewX(-20deg)}
+.pkg:hover:before,.pkg.selected:before{animation:shine .8s}
+.pkg:hover,.pkg.selected{border-color:#e52e42;background:linear-gradient(90deg,#1c0a0f,#0d1016);box-shadow:0 0 22px #ff14321f}
+.pkg-name{font-size:13px;font-weight:950}.pkg-meta{font-size:9px;color:#707a89;margin-top:3px}.pkg-price{font-size:16px;color:#ff4c5c;font-weight:1000;text-shadow:0 0 10px #ff1e3740}
+
+.power-legend{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;
+}
+.power-legend span{
+ padding:8px 5px;border:1px solid #2b313b;border-radius:10px;
+ background:#090b10;color:#727d8b;text-align:center;font-size:7px;font-weight:900;
+ line-height:1.35;
+}
+.power-legend b{
+ display:block;color:#ff6571;font-size:11px;margin-bottom:2px;
+ text-shadow:0 0 8px #ff173344;
+}
+.select,.complete{width:100%;border:0;border-radius:13px;padding:15px;margin-top:13px;color:#fff;background:linear-gradient(90deg,#960b1a,#ff1f3d,#960b1a);background-size:200%;font-size:13px;font-weight:950;box-shadow:0 9px 25px #0007,0 0 20px #ff003c12;animation:gradient 4s linear infinite}
+.checkout{display:none;margin:23px 14px 0;padding:18px;border-radius:22px;border:1px solid #343a45;background:linear-gradient(145deg,#12151b,#080a0e);box-shadow:0 22px 55px #000a}
+.checkout.show{display:block}.checkout-title{font-size:22px;font-weight:1000;margin:0 0 14px}
+.summary{padding:14px;border-radius:14px;background:#1b090e;border:1px solid #70242e;box-shadow:0 0 25px #ff003c12}.summary strong{color:#ff747e;font-size:13px}.summary-line{display:flex;justify-content:space-between;gap:12px;margin-top:7px;font-size:11px;color:#9ca6b3}.summary-line b{color:#fff}
+label{display:block;margin:16px 0 7px;color:#aeb6c1;font-size:11px;font-weight:850}
+input,select{width:100%;padding:14px;border-radius:12px;border:1px solid #353b45;background:#07090d;color:#fff;outline:0;font-size:15px}input:focus,select:focus{border-color:#ef3848;box-shadow:0 0 0 3px #ff143212}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.method{border:1px solid #343a44;border-radius:12px;padding:13px;background:#080a0e;color:#fff;font-size:12px;font-weight:950;text-align:center}.method.active{border-color:#ef3848;background:#220b10;color:#ff737c;box-shadow:0 0 18px #ff143221}
+.panel{display:none;position:relative;margin-top:10px;padding:16px;border-radius:17px;border:1px solid #303640;background:#06080c;text-align:center;overflow:hidden}.panel.show{display:block}
+.panel:before{content:"";position:absolute;left:8%;right:8%;top:-10px;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 8px var(--cyan),0 0 18px var(--cyan),0 0 30px #00e5ff99;animation:scanner 2.7s ease-in-out infinite}
+.panel-title{font-size:12px;font-weight:950;letter-spacing:.5px}
+.qr-frame{position:relative;width:min(100%,310px);margin:13px auto 10px;padding:9px;border-radius:19px;background:#fff;box-shadow:0 0 0 1px #fff,0 0 18px #00e5ffaa,0 0 42px #00e5ff33;cursor:pointer}
+.qr{display:block;width:100%;height:auto;border-radius:9px}.qr-frame:before{content:"";position:absolute;inset:4px;border-radius:15px;border:1px solid #00e5ffcc;box-shadow:inset 0 0 15px #00e5ff2e}.qr-frame:after{content:"";position:absolute;left:9px;right:9px;top:12%;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);animation:scanner 2.3s linear infinite}
+.copyrow{display:flex;gap:7px}.upi{flex:1;padding:11px;border-radius:10px;background:#151920;border:1px solid #303640;font-size:11px;font-weight:850;word-break:break-all}.copy{border:0;border-radius:10px;padding:0 12px;background:#303741;color:#fff;font-size:10px;font-weight:950}
+.note{margin-top:8px;color:#7e8997;font-size:10px;line-height:1.55}.confirm{display:none;margin-top:13px;padding:15px;border-radius:15px;background:#0b2018;border:1px solid #247b5a;box-shadow:0 0 25px #28dc910f}.confirm.show{display:block}.confirm strong{color:#4be39d}.order{margin-top:8px;color:#d8dee6;font-size:11px;word-break:break-all}
+.support{display:block;margin-top:11px;padding:14px;text-align:center;border-radius:12px;background:linear-gradient(90deg,#147fc3,#2aa9ff);color:#fff;font-size:12px;font-weight:950;box-shadow:0 0 22px #249df52e}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 14px 0}.tool{padding:14px 8px;border:1px solid #292f39;border-radius:15px;background:#0c0f14;text-align:center;color:#fff;font-size:10px;font-weight:900}.tool span{display:block;font-size:19px;margin-bottom:5px}
+.faq{margin:22px 14px 0;padding:18px;border:1px solid #292f39;border-radius:20px;background:#0d1015}.faq h2{font-size:20px;margin:0 0 10px}.faq details{border-top:1px solid #282e37;padding:12px 0}.faq details:first-of-type{border-top:0}.faq summary{cursor:pointer;font-size:12px;font-weight:900}.faq p{color:#8892a0;font-size:11px;line-height:1.55;margin:7px 0 0}
+.footer{text-align:center;padding:31px 18px;color:#606a77;font-size:10px;line-height:1.8}.footer a{color:#4aaeff}
+.toast{position:fixed;z-index:200;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:999px;background:#1d222a;border:1px solid #3b434f;color:#fff;font-size:11px;font-weight:900;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal{display:none;position:fixed;inset:0;z-index:150;background:#000c;backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{width:min(600px,100%);padding:14px;border:1px solid #3d4653;border-radius:22px;background:#0b0e14;box-shadow:0 30px 80px #000;position:relative}.modal-box img{display:block;width:100%;max-height:75vh;object-fit:contain;border-radius:12px;background:#fff}.close{position:absolute;right:10px;top:10px;border:0;width:38px;height:38px;border-radius:50%;background:#202630;color:#fff;font-size:20px;font-weight:900}
+.to-top{position:fixed;right:15px;bottom:18px;z-index:120;width:43px;height:43px;border:1px solid #3b424d;border-radius:50%;background:#12161d;color:#fff;box-shadow:0 0 18px #0008;display:none}.to-top.show{display:block}
+@keyframes pulse{50%{opacity:.3;transform:scale(.72)}}@keyframes float{to{transform:translate(40px,-25px) scale(1.12)}}@keyframes topscan{0%{transform:translateX(-35%);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateX(35%);opacity:0}}@keyframes logoPulse{50%{text-shadow:0 0 8px #fff2,0 0 20px var(--red),0 0 48px #ff003ccc}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes shine{to{left:120%}}@keyframes gradient{to{background-position:200% 0}}@keyframes scanner{0%{transform:translateY(-8px);opacity:0}12%{opacity:1}50%{transform:translateY(260px);opacity:1}88%{opacity:1}100%{transform:translateY(-8px);opacity:0}}
+@media(max-width:520px){.mini-strip span{font-size:6.5px}.shoutout{font-size:7px}.power-legend span{font-size:6.5px}.power-legend b{font-size:10px}.logo{font-size:29px}.hero-title{font-size:26px}.offer{align-items:flex-start;flex-direction:column}.timer{width:100%}.time{flex:1}.features{grid-template-columns:repeat(4,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+/* ===== PAYMENT FLOW ===== */
+.payflow{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;
+  padding:18px 12px 30px;background:rgba(0,0,0,.78);backdrop-filter:blur(14px);overflow:auto}
+.payflow.show{display:flex}
+.paybox{width:min(560px,100%);margin:auto;background:linear-gradient(145deg,#10151d,#07090d);
+  border:1px solid #303946;border-radius:28px;box-shadow:0 30px 100px #000;overflow:hidden}
+.payhead{padding:20px 18px 14px;border-bottom:1px solid #252b34;position:relative}
+.paybrand{font-size:12px;font-weight:1000;letter-spacing:2px;color:#00e5ff}
+.paytitle{font-size:26px;font-weight:1000;margin:5px 42px 3px 0}
+.paysub{font-size:12px;color:#8e99a8}
+.payclose{position:absolute;right:14px;top:14px;width:40px;height:40px;border:1px solid #38414d;
+  border-radius:50%;background:#151a22;color:#fff;font-size:22px}
+.paybody{padding:16px}
+.payfield{margin-bottom:12px}
+.payfield label{display:block;font-size:11px;font-weight:900;color:#9aa5b4;margin:0 0 7px}
+.payfield input{width:100%;padding:14px;border-radius:13px;border:1px solid #39424e;background:#0c1016;color:#fff;
+  outline:none;font-size:15px}
+.payfield input:focus{border-color:#00e5ff;box-shadow:0 0 0 3px #00e5ff18}
+.paysummary{display:grid;grid-template-columns:1fr auto;gap:9px;padding:15px;border-radius:17px;
+  background:linear-gradient(135deg,#111820,#0a0d12);border:1px solid #29313c;margin:12px 0}
+.paysummary .label{font-size:11px;color:#8994a4}.paysummary .value{font-size:13px;font-weight:950;text-align:right}
+.payamount{font-size:25px;font-weight:1000}
+.paytimer{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:14px;
+  border:1px solid #3a3030;background:#170d10;margin-bottom:13px}
+.paytimer span:first-child{font-size:10px;font-weight:950;color:#aeb7c4;letter-spacing:1px}
+.paytimer b{font-size:20px;color:#ff4966}
+.paymethods{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.paymethod{padding:13px 8px;border-radius:13px;border:1px solid #343d49;background:#0c1016;color:#b8c1cd;font-weight:950}
+.paymethod.active{color:#fff;border-color:#00e5ff;box-shadow:0 0 22px #00e5ff20;background:#101b21}
+.paypanel{display:none}.paypanel.show{display:block}
+.payqrwrap{padding:14px;border-radius:19px;background:#f7f7f7;margin-bottom:10px;text-align:center}
+.payqr{width:min(290px,78vw);aspect-ratio:1;object-fit:contain;border-radius:10px;display:block;margin:auto}
+.payhint{text-align:center;font-size:11px;color:#7d8997;margin:8px 0 12px}
+.paycopy{display:flex;gap:7px}
+.paycopy code{flex:1;min-width:0;padding:12px;border-radius:11px;background:#11161d;border:1px solid #303945;
+  color:#e8edf3;font-size:11px;overflow-wrap:anywhere}
+.paycopy button{border:0;border-radius:11px;padding:0 13px;background:#28313b;color:#fff;font-weight:950}
+.payprimary{width:100%;margin-top:14px;padding:15px;border:0;border-radius:15px;color:#fff;font-weight:1000;
+  font-size:14px;background:linear-gradient(90deg,#ff1740,#8b5cf6,#00e5ff);box-shadow:0 0 30px #8b5cf633}
+.paysecondary{width:100%;margin-top:8px;padding:12px;border:1px solid #303945;border-radius:13px;background:#0e1218;color:#c5ced9;font-weight:900}
+.paystatus{display:none;margin-top:12px;padding:13px;border-radius:14px;border:1px solid #2e6d59;background:#0b1713}
+.paystatus.show{display:block}
+.paystatus strong{color:#35e39a}.paystatus small{display:block;color:#9ba7b4;margin-top:4px}
+@media(max-width:430px){.paybox{border-radius:22px}.paytitle{font-size:23px}.paybody{padding:13px}}
+
+
+/* ===== DAWOODXOWNER SMOOTH PREMIUM POLISH ===== */
+html{scroll-behavior:smooth}
+body{overscroll-behavior-y:none}
+button,a,.pkg,.card,.tool,.nav-link,.paymethod{transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,border-color .22s ease,background .22s ease,opacity .22s ease}
+button:active,.tool:active,.nav-link:active,.paymethod:active{transform:scale(.97)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #00e5ff;outline-offset:3px}
+::selection{background:#00e5ff55;color:#fff}
+*{-webkit-tap-highlight-color:transparent}
+@media (hover:hover){
+  .pkg:hover,.card:hover,.tool:hover{transform:translateY(-4px)}
+  button:hover{filter:brightness(1.08)}
+}
+.premium-toast{position:fixed;left:50%;bottom:22px;z-index:10050;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  min-width:min(340px,calc(100vw - 28px));padding:13px 16px;border:1px solid #35404d;border-radius:15px;
+  background:rgba(10,14,20,.94);backdrop-filter:blur(18px);box-shadow:0 18px 55px #0008;color:#fff;
+  text-align:center;font-size:12px;font-weight:900;letter-spacing:.2px}
+.premium-toast.show{opacity:1;transform:translate(-50%,0)}
+.premium-toast.ok{border-color:#21d49b66;box-shadow:0 18px 55px #21d49b20}
+.premium-toast.bad{border-color:#ff426466;box-shadow:0 18px 55px #ff426420}
+.payflow{animation:none}
+.payflow.show .paybox{animation:payIn .32s cubic-bezier(.2,.9,.2,1)}
+@keyframes payIn{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.payqrwrap{position:relative;overflow:hidden}
+.payqrwrap:after{content:"";position:absolute;left:7%;right:7%;top:-5%;height:2px;background:linear-gradient(90deg,transparent,#00e5ff,#fff,#00e5ff,transparent);
+  box-shadow:0 0 18px #00e5ff;animation:scan 2.7s linear infinite;pointer-events:none}
+@keyframes scan{0%{top:5%}100%{top:95%}}
+.payprimary{position:relative;overflow:hidden}
+.payprimary:after{content:"";position:absolute;inset:0;transform:translateX(-120%);background:linear-gradient(110deg,transparent 35%,#fff5 50%,transparent 65%);animation:shine 2.8s infinite}
+@keyframes shine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.payprimary>*{position:relative;z-index:1}
+.paystatus{animation:statusIn .28s ease}
+@keyframes statusIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+
+.payqrwrap{padding:10px;background:linear-gradient(145deg,#f8fafc,#e9eef3);box-shadow:inset 0 0 0 1px #fff,0 18px 50px #0005}
+.payqr{width:min(330px,84vw);border-radius:14px}
+.payupi{width:100%;margin-top:10px;padding:13px;border:1px solid #00e5ff55;border-radius:13px;background:linear-gradient(90deg,#07181d,#11131a);color:#fff;font-weight:1000;box-shadow:0 0 22px #00e5ff12}
+.payupi:active{transform:scale(.98)}
+
+
+/* FINAL ACCESSIBILITY + VISUAL POLISH */
+.currency-note{margin-top:7px;color:#7f8a99;font-size:9px;line-height:1.45}
+.customer-box{margin-top:15px;padding:14px;border:1px solid #394452;border-radius:16px;background:linear-gradient(145deg,#0f151d,#090c12);box-shadow:inset 0 1px #ffffff08,0 10px 28px #0005}
+.customer-title{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#eaf2fb;font-size:11px;font-weight:1000;letter-spacing:.7px}
+.customer-title span{font-size:8px;padding:4px 7px;border-radius:999px;color:#7fffc4;background:#0d2b22;border:1px solid #2ac98e55}
+.customer-box label{margin:12px 0 7px}
+.field-help{margin-top:7px;color:#7d8997;font-size:9px}
+.pkg-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:0 0 auto}
+.pkg-cta{font-size:8px;font-weight:1000;letter-spacing:.8px;padding:5px 8px;border-radius:999px;color:#fff;background:linear-gradient(90deg,#ff1740,#8b5cf6);box-shadow:0 0 12px #8b5cf633}
+.pkg.selected .pkg-cta{background:linear-gradient(90deg,#00cfa0,#00e5ff);color:#031013;box-shadow:0 0 15px #00e5ff55}
+.pkg:focus-visible{outline:2px solid #00e5ff;outline-offset:2px}
+.action,.select,.complete,.method,.copy,.payupi,.tool,.quick-grid button,.support{min-height:44px}
+@media(max-width:520px){.pkg{padding:13px 11px}.pkg-meta{max-width:190px}.pkg-cta{font-size:7px}.customer-title{font-size:10px}}
+
+/* CYBER VIOLET + ELECTRIC CYAN FINAL PALETTE */
+.header{background:linear-gradient(180deg,rgba(26,8,48,.96),rgba(5,6,10,.82))}
+.logo span,.kicker,.label,.pkg-price,.shoutout b{color:#c56cff}
+.hero-card{background:radial-gradient(circle at 100% 0,#8b5cf633,transparent 38%),linear-gradient(145deg,#180d28,#080a0f)}
+.hero-title em{color:#c56cff}
+.status{border-color:#542a7c;background:#170a28;color:#d9a8ff}
+.status i{background:#c56cff;box-shadow:0 0 13px #c56cff}
+.action.primary,.select,.complete{background:linear-gradient(90deg,#6d28d9,#a855f7,#00cfe8);box-shadow:0 9px 25px #0007,0 0 24px #8b5cf633}
+.pkg:hover,.pkg.selected{border-color:#a855f7;background:linear-gradient(90deg,#1b0d2d,#0d1016);box-shadow:0 0 22px #8b5cf633}
+.pkg-cta{background:linear-gradient(90deg,#8b5cf6,#00e5ff)}
+.method.active{border-color:#a855f7;background:#1a0d2a;color:#d8b4fe;box-shadow:0 0 18px #8b5cf633}
+.summary{background:#170d23;border-color:#66378a}
+input:focus,select:focus{border-color:#a855f7;box-shadow:0 0 0 3px #a855f722}
+.payprimary{background:linear-gradient(90deg,#7c3aed,#a855f7,#00e5ff)}
+.support{background:linear-gradient(90deg,#5b21b6,#8b5cf6,#00a9c8)}
+</style>
+</head>
+
+<div id="scrollProgress" style="position:fixed;z-index:10060;top:0;left:0;width:0;height:2px;background:linear-gradient(90deg,#ff1740,#8b5cf6,#00e5ff);box-shadow:0 0 12px #00e5ff;pointer-events:none"></div>
+<body>
+<div class="ambient"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+<div class="wrap">
+
+<header class="header" id="top">
+<div class="topline"></div>
+<div class="logo">DAWOOD<span>XOWNER</span></div>
+<div class="subtitle">ULTRA PREMIUM CONFIG STORE</div>
+<div class="status"><i></i> STORE ONLINE • PREMIUM DIGITAL ACCESS</div>
+<div class="shoutout">✦ SHOUT OUT • <b>UMAR BHAI</b> ✦</div>
+</header>
+
+<nav class="nav">
+<a href="#products">PRODUCTS</a>
+<a href="#checkout">CHECKOUT</a>
+<a href="#faq">FAQ</a>
+<a href="https://t.me/DAWOODXOWNER_CONFIG" target="_blank" rel="noopener">SUPPORT</a>
+<button id="themeBtn" type="button" onclick="toggleTheme()">☾</button>
+</nav>
+
+<section class="hero">
+<div class="hero-card">
+<div class="kicker">DAWOODXOWNER • NEXT LEVEL EXPERIENCE</div>
+<div class="hero-title">Premium <em>Digital Configs</em><br>Built for Mobile.</div>
+<div class="hero-desc">Select your game and package, enter your email, choose a payment method, then keep your order reference for support.</div>
+<div class="actions">
+<button class="action primary" onclick="scrollToId('products')">VIEW PACKAGES</button>
+<button class="action" onclick="shareStore()">SHARE STORE</button>
+<button class="action" onclick="openSupport()">TELEGRAM</button>
+</div>
+</div>
+
+<div class="mini-strip">
+<span>⚡ INSTANT ORDER ID</span>
+<span>📲 MOBILE READY</span>
+<span>🔐 NO CARD DETAILS</span>
+<span>💬 TELEGRAM SUPPORT</span>
+</div>
+
+<div class="features">
+<div class="feature"><b>⚡</b><span>FAST</span></div>
+<div class="feature"><b>🔒</b><span>SECURE FLOW</span></div>
+<div class="feature"><b>📱</b><span>MOBILE</span></div>
+<div class="feature"><b>💎</b><span>PREMIUM</span></div>
+</div>
+</section>
+
+<div class="offer">
+<div><div class="offer-title">⏳ LIMITED-TIME OFFER</div><div class="offer-note">Countdown resets for the next offer window.</div></div>
+<div class="timer">
+<div class="time"><b id="hh">00</b><small>HOURS</small></div>
+<div class="time"><b id="mm">15</b><small>MIN</small></div>
+<div class="time"><b id="ss">00</b><small>SEC</small></div>
+</div>
+</div>
+
+<main id="products">
+
+<section class="section">
+<div class="section-head"><h2 class="section-title">🎮 BGMI CONFIG</h2><span class="tag">3 PACKAGES</span></div>
+<div class="card">
+<div class="label">BGMI PREMIUM</div>
+<div class="card-title">BGMI Premium Config</div>
+<div class="desc">Choose a package to continue to the premium checkout.</div>
+
+<div class="pkg" data-game="BGMI CONFIG" data-name="BASE CONFIG" data-price="450" data-power="40% Power" onclick="selectPkg(this)">
+<div><div class="pkg-name">BASE CONFIG</div><div class="pkg-meta">1 Season access • 40% Power</div></div><div class="pkg-right"><div class="pkg-price">₹450</div><span class="pkg-cta">SELECT</span></div>
+</div>
+<div class="pkg" data-game="BGMI CONFIG" data-name="ADVANCE CONFIG" data-price="1200" data-power="100% Power" onclick="selectPkg(this)">
+<div><div class="pkg-name">ADVANCE CONFIG</div><div class="pkg-meta">1 Season access • 100% Power</div></div><div class="pkg-right"><div class="pkg-price">₹1,200</div><span class="pkg-cta">SELECT</span></div>
+</div>
+<div class="pkg" data-game="BGMI CONFIG" data-name="VPN + CFG" data-price="5000" data-power="UNLIMITED • ONLY HEADSHOT" onclick="selectPkg(this)">
+<div><div class="pkg-name">VPN + CFG</div><div class="pkg-meta">1 Season access • UNLIMITED • ONLY HEADSHOT</div></div><div class="pkg-right"><div class="pkg-price">₹5,000</div><span class="pkg-cta">SELECT</span></div>
+</div>
+<div class="power-legend">
+<span><b>40%</b> BASE POWER</span>
+<span><b>100%</b> ADVANCE POWER</span>
+<span><b>∞</b> VPN+CFG • ONLY HEADSHOT</span>
+</div>
+<button class="select" onclick="openSelected('BGMI CONFIG')">SELECT BGMI PACKAGE →</button>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head"><h2 class="section-title">🌐 PUBG GLOBAL</h2><span class="tag">3 PACKAGES</span></div>
+<div class="card">
+<div class="label">PUBG GLOBAL PREMIUM</div>
+<div class="card-title">PUBG Global Premium Config</div>
+<div class="desc">Choose a package to continue to the premium checkout.</div>
+
+<div class="pkg" data-game="PUBG GLOBAL CONFIG" data-name="BASE CONFIG" data-price="450" data-power="40% Power" onclick="selectPkg(this)">
+<div><div class="pkg-name">BASE CONFIG</div><div class="pkg-meta">1 Season access • 40% Power</div></div><div class="pkg-right"><div class="pkg-price">₹450</div><span class="pkg-cta">SELECT</span></div>
+</div>
+<div class="pkg" data-game="PUBG GLOBAL CONFIG" data-name="ADVANCE CONFIG" data-price="1200" data-power="100% Power" onclick="selectPkg(this)">
+<div><div class="pkg-name">ADVANCE CONFIG</div><div class="pkg-meta">1 Season access • 100% Power</div></div><div class="pkg-right"><div class="pkg-price">₹1,200</div><span class="pkg-cta">SELECT</span></div>
+</div>
+<div class="pkg" data-game="PUBG GLOBAL CONFIG" data-name="VPN + CFG" data-price="5000" data-power="UNLIMITED • ONLY HEADSHOT" onclick="selectPkg(this)">
+<div><div class="pkg-name">VPN + CFG</div><div class="pkg-meta">1 Season access • UNLIMITED • ONLY HEADSHOT</div></div><div class="pkg-right"><div class="pkg-price">₹5,000</div><span class="pkg-cta">SELECT</span></div>
+</div>
+<div class="power-legend">
+<span><b>40%</b> BASE POWER</span>
+<span><b>100%</b> ADVANCE POWER</span>
+<span><b>∞</b> VPN+CFG • ONLY HEADSHOT</span>
+</div>
+<button class="select" onclick="openSelected('PUBG GLOBAL CONFIG')">SELECT PUBG PACKAGE →</button>
+</div>
+</section>
+
+<section class="checkout" id="checkout">
+<div class="checkout-title">⚡ Premium Checkout</div>
+<div class="summary">
+<strong id="sumGame">Product</strong>
+<div class="summary-line"><span>Package</span><b id="sumPackage">—</b></div>
+<div class="summary-line"><span>Price</span><b id="sumPrice">—</b></div>
+<div class="summary-line"><span>Validity</span><b>1 Season</b></div><div class="summary-line"><span>Power</span><b id="sumPower">—</b></div>
+</div>
+
+<div class="customer-box">
+  <div class="customer-title">📧 CUSTOMER EMAIL <span>REQUIRED</span></div>
+  <label for="email">Email Address</label>
+  <input id="email" type="email" autocomplete="email" inputmode="email" placeholder="Enter your email address" aria-label="Email Address" required>
+  <div class="field-help">Your order reference will be linked to this email.</div>
+</div>
+
+<label for="currency">Display Currency</label>
+<select id="currency" onchange="updateCurrencyDisplay()" aria-label="Display Currency">
+<option value="INR">INR — ₹ Rupees</option>
+<option value="USD">USD — $ Dollar</option>
+<option value="USDT">USDT — ₮ Tether</option>
+</select>
+<div class="currency-note">Display only • UPI checkout is always charged in INR. Binance amount is shown as an approximate USDT value.</div>
+
+<label>Payment Method</label>
+<div class="methods">
+<button class="method active" id="mUpi" onclick="paymentTab('upi')">🇮🇳 UPI SCANNER</button>
+<button class="method" id="mBinance" onclick="paymentTab('binance')">🟡 BINANCE</button>
+</div>
+
+<div class="panel show" id="upi">
+<div class="panel-title">PAYTM / UPI • SCAN TO PAY</div>
+<div class="qr-frame" onclick="openUPIQR()"><img class="qr" id="upiQrImg" src="upi-qr-450.png" alt="Paytm / UPI QR Code — ₹450" width="280" height="280" decoding="async" fetchpriority="high"></div>
+<div class="payupi" id="upiAmountNote" style="text-align:center;margin-top:8px">AMOUNT ENCODED: ₹450 INR</div>
+<div class="payupi" style="text-align:center">PAYTM / UPI PAYMENT</div>
+<div class="copyrow" style="margin-top:9px"><div class="upi">tawfik.shxikh@ptaxis</div><button class="copy" onclick="copyText('tawfik.shxikh@ptaxis')">COPY</button></div>
+<button class="payupi" onclick="payNowUPI()">⚡ PAY NOW IN UPI APP</button>
+<div class="note">Scan the QR with Paytm or any supported UPI app. The selected <b>INR</b> amount is encoded in the QR. Display Currency changes the website display only; UPI payment remains in INR. You can also use the UPI ID above. After paying, return here and tap “I HAVE COMPLETED PAYMENT”.</div>
+</div>
+
+<div class="panel" id="binance">
+<div class="panel-title">SCAN TO PAY • BINANCE</div>
+<div class="qr-frame" onclick="openQR('binance-qr.png','Binance QR')"><img class="qr" src="binance-qr.png" alt="Binance QR Code" width="280" height="280" decoding="async"></div>
+<div class="copyrow" style="margin-top:9px"><div class="upi">BINANCE ID: 1277146240</div><button class="copy" onclick="copyText('1277146240')">COPY ID</button></div>
+<button class="payupi" onclick="openBinance()">🟡 OPEN BINANCE PAYMENT</button>
+<div class="note">Scan the QR or use Binance ID <b>1277146240</b>. Tap the QR for full-screen view, or open the verified Binance payment link.</div>
+</div>
+
+<button class="complete" onclick="completePayment()">✓ I HAVE COMPLETED PAYMENT</button>
+
+<div class="confirm" id="confirm">
+<strong>Payment confirmation ready ✓</strong>
+<div class="order">Order ID: <span id="orderId"></span></div>
+<div class="note">Save your Order ID and send it with your payment reference to support.</div>
+<button class="copy" style="padding:10px 12px;margin-top:9px" onclick="copyText(document.getElementById('orderId').textContent)">COPY ORDER ID</button>
+<a class="support" href="https://t.me/DAWOODXOWNER_CONFIG" target="_blank" rel="noopener">💬 CONTACT DAWOODXOWNER SUPPORT</a>
+</div>
+<div class="note">🔒 This static checkout does not collect card details. Payment instructions use the payment information supplied by the store owner.</div>
+</section>
+
+</main>
+
+<section class="quick-panel">
+  <div class="quick-title">PREMIUM STORE TOOLS</div>
+  <div class="quick-grid">
+    <button onclick="scrollToId('products')"><b>🛒</b><span>Browse</span></button>
+    <button onclick="scrollToId('checkout')"><b>⚡</b><span>Checkout</span></button>
+    <button onclick="openSupport()"><b>💬</b><span>Support</span></button>
+    <button onclick="shareStore()"><b>🔗</b><span>Share</span></button>
+    <button onclick="toggleTheme()"><b>◐</b><span>Theme</span></button>
+    <button onclick="scrollToId('faq')"><b>❓</b><span>FAQ</span></button>
+  </div>
+</section>
+
+<div class="tools">
+<button class="tool" onclick="scrollToId('products')"><span>🛒</span>SHOP</button>
+<button class="tool" onclick="scrollToId('checkout')"><span>💳</span>CHECKOUT</button>
+<button class="tool" onclick="openSupport()"><span>💬</span>SUPPORT</button>
+</div>
+
+<section class="faq" id="faq">
+<h2>❓ Frequently Asked Questions</h2>
+<details><summary>How do I order?</summary><p>Select a game and package, enter your email, choose UPI or Binance, then complete the payment. Your selected display currency only changes the website price display.</p></details>
+<details><summary>Where is the QR scanner?</summary><p>Open checkout and choose UPI Scanner or Binance. The QR is displayed in a neon scanner frame.</p></details>
+<details><summary>How do I get support?</summary><p>Save your Order ID and contact DAWOODXOWNER through Telegram.</p></details>
+<details><summary>What is the access validity?</summary><p>The current storefront displays 1 Season access.</p></details>
+</section>
+
+<footer class="footer">
+© 2026 DAWOODXOWNER • ULTRA PREMIUM CONFIG STORE<br>
+<a href="https://t.me/DAWOODXOWNER_CONFIG" target="_blank" rel="noopener">Telegram Support</a>
+</footer>
+</div>
+
+<div class="modal" id="qrModal" onclick="closeQR(event)">
+<div class="modal-box">
+<button class="close" onclick="closeQR()">×</button>
+<img id="modalImg" src="" alt="Payment QR">
+</div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+<div class="premium-toast" id="premiumToast" aria-live="polite"></div>
+<button class="to-top" id="toTop" onclick="scrollToId('top')">↑</button>
+
+<script>
+
+function premiumToast(message,type="ok"){
+ const t=document.getElementById("premiumToast");
+ if(!t)return;
+ t.textContent=message;
+ t.className="premium-toast show "+type;
+ clearTimeout(window.__toastTimer);
+ window.__toastTimer=setTimeout(()=>t.className="premium-toast",2200);
+}
+function safeCopy(text){
+ if(!text)return Promise.reject(new Error("Nothing to copy"));
+ if(navigator.clipboard && window.isSecureContext){
+   return navigator.clipboard.writeText(text);
+ }
+ const ta=document.createElement("textarea");
+ ta.value=text; ta.setAttribute("readonly","");
+ ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);
+ ta.select();ta.setSelectionRange(0,ta.value.length);
+ const ok=document.execCommand("copy");
+ ta.remove();
+ return ok?Promise.resolve():Promise.reject(new Error("Copy failed"));
+}
+
+"use strict";
+
+let selected={game:"",name:"",price:0,power:""};
+
+// Display-only rates. UPI QR payments remain INR; Binance is displayed in USDT.
+const rates={INR:1,USD:0.0119,USDT:0.0119};
+
+function money(n){
+ const cur=document.getElementById("currency")?.value || "INR";
+ const symbol={INR:"₹",USD:"$",USDT:"₮"}[cur] || "₹";
+ const decimals=cur==="INR"?0:2;
+ return symbol+Number(n*(rates[cur]||1)).toFixed(decimals);
+}
+
+function updateCurrencyDisplay(){
+ document.querySelectorAll(".pkg").forEach(el=>{
+   const price=Number(el.dataset.price||0);
+   const out=el.querySelector(".pkg-price");
+   if(out) out.textContent=money(price);
+ });
+ updateSummary();
+ updateUPIQR();
+}
+
+function selectPkg(el){
+ document.querySelectorAll(".pkg").forEach(x=>x.classList.remove("selected"));
+ el.classList.add("selected");
+ selected={game:el.dataset.game,name:el.dataset.name,price:Number(el.dataset.price),power:el.dataset.power||""};
+ updateSummary();
+ updateUPIQR();
+}
+
+function openSelected(game){
+ if(!selected.name||selected.game!==game){
+  const first=document.querySelector('.pkg[data-game="'+game+'"]');
+  if(first)selectPkg(first);
+ }
+ updateSummary();
+ scrollToId('checkout');
+ premiumToast('Checkout ready — enter your email and choose payment','ok');
+}
+
+function updateSummary(){
+ document.getElementById("sumGame").textContent=selected.game||"Product";
+ document.getElementById("sumPackage").textContent=selected.name||"—";
+ document.getElementById("sumPrice").textContent=selected.price?money(selected.price):"—";
+ document.getElementById("sumPower").textContent=selected.power||"—";
+}
+
+function paymentTab(which){
+ document.getElementById("upi").classList.toggle("show",which==="upi");
+ document.getElementById("binance").classList.toggle("show",which==="binance");
+ document.getElementById("mUpi").classList.toggle("active",which==="upi");
+ document.getElementById("mBinance").classList.toggle("active",which==="binance");
+}
+
+function scrollToId(id){
+ const el=document.getElementById(id);
+ if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function openSupport(){
+ window.open("https://t.me/DAWOODXOWNER_CONFIG","_blank","noopener");
+}
+
+async function shareStore(){
+ try{
+  if(navigator.share){
+   await navigator.share({title:"DAWOODXOWNER Premium Store",text:"DAWOODXOWNER Premium Config Store",url:location.href});
+  }else{
+   await copyText(location.href);
+   showToast("Store link copied ✓");
+  }
+ }catch(e){}
+}
+
+async function copyText(text){
+ safeCopy(text).then(()=>premiumToast("Copied ✓","ok")).catch(()=>premiumToast("Copy failed — long press to copy","bad"));
+}
+
+function showToast(msg){
+ const toast=document.getElementById("toast");
+ toast.textContent=msg;toast.classList.add("show");
+ setTimeout(()=>toast.classList.remove("show"),1400);
+}
+
+function openQR(src,title){
+ const modal=document.getElementById("qrModal");
+ document.getElementById("modalImg").src=src;
+ document.getElementById("modalImg").alt=title;
+ modal.classList.add("show");
+}
+
+function closeQR(event){
+ if(!event||event.target===document.getElementById("qrModal")){
+  document.getElementById("qrModal").classList.remove("show");
+ }
+}
+
+function toggleTheme(){
+ document.body.classList.toggle("light");
+ document.getElementById("themeBtn").textContent=
+  document.body.classList.contains("light")?"☀":"☾";
+ try{localStorage.setItem("dx-theme",document.body.classList.contains("light")?"light":"dark")}catch(e){}
+}
+
+try{
+ if(localStorage.getItem("dx-theme")==="light"){
+  document.body.classList.add("light");
+  document.getElementById("themeBtn").textContent="☀";
+ }
+}catch(e){}
+
+
+function makeOrderId(){
+  return "DXO-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
+}
+
+let currentOrderId="";
+function ensureOrderId(){
+  if(!currentOrderId) currentOrderId=makeOrderId();
+  document.getElementById("orderId").textContent=currentOrderId;
+  return currentOrderId;
+}
+
+function validEmail(){
+  const email=document.getElementById("email").value.trim();
+  return !!email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function currentINRAmount(){
+  return selected.price || 450;
+}
+
+function upiQRPath(){
+  const amount=currentINRAmount();
+  return amount===1200 ? "upi-qr-1200.png" : amount===5000 ? "upi-qr-5000.png" : "upi-qr-450.png";
+}
+
+function updateUPIQR(){
+  const amount=currentINRAmount();
+  const path=upiQRPath();
+  const img=document.getElementById("upiQrImg");
+  const note=document.getElementById("upiAmountNote");
+  if(img){ img.src=path; img.alt=`Paytm / UPI QR Code — ₹${amount}`; }
+  if(note) note.textContent=`AMOUNT ENCODED: ₹${amount.toLocaleString("en-IN")} INR`;
+}
+
+function openUPIQR(){
+  openQR(upiQRPath(),`Paytm / UPI QR — ₹${currentINRAmount()}`);
+}
+
+function payNowUPI(){
+  if(!selected.name){
+    premiumToast("Select a package first","bad");
+    scrollToId("products");
+    return;
+  }
+  if(!validEmail()){
+    document.getElementById("email").focus();
+    premiumToast("Enter a valid email first","bad");
+    return;
+  }
+  const id=ensureOrderId();
+  const params=new URLSearchParams({
+    pa:"tawfik.shxikh@ptaxis",
+    pn:"DAWOODXOWNER",
+    am:String(selected.price),
+    cu:"INR",
+    tr:id,
+    tn:`${selected.game} ${selected.name}`
+  });
+  window.location.href="upi://pay?"+params.toString();
+  premiumToast("Opening your UPI app…","ok");
+}
+
+function openBinance(){
+  window.open("https://app.binance.com/uni-qr/PmvLno4h","_blank","noopener");
+}
+
+function finishOrder(){
+  if(!selected.name){
+    premiumToast("Select a package first","bad");
+    return;
+  }
+  if(!validEmail()){
+    document.getElementById("email").focus();
+    premiumToast("Enter a valid email first","bad");
+    return;
+  }
+  const id=ensureOrderId();
+  document.getElementById("confirm").classList.add("show");
+  document.getElementById("confirm").scrollIntoView({behavior:"smooth",block:"center"});
+  premiumToast("Order reference created: "+id,"ok");
+}
+
+function completePayment(){ finishOrder(); }
+
+let end=Date.now()+15*60*1000;
+function tick(){
+ const left=Math.max(0,end-Date.now()),total=Math.floor(left/1000);
+ document.getElementById("hh").textContent=String(Math.floor(total/3600)).padStart(2,"0");
+ document.getElementById("mm").textContent=String(Math.floor((total%3600)/60)).padStart(2,"0");
+ document.getElementById("ss").textContent=String(total%60).padStart(2,"0");
+ if(left<=0)end=Date.now()+15*60*1000;
+ setTimeout(tick,250);
+}
+tick();
+
+window.addEventListener("scroll",()=>{
+ document.getElementById("toTop").classList.toggle("show",window.scrollY>500);
+});
+
+document.addEventListener("keydown",(e)=>{
+ if(e.key==="Escape"){
+ document.getElementById("qrModal").classList.remove("show");
+}
+});
+
+window.addEventListener("scroll",()=>{
+ const d=document.documentElement;
+ const max=d.scrollHeight-d.clientHeight;
+ const pct=max>0?(scrollY/max)*100:0;
+ const el=document.getElementById("scrollProgress");
+ if(el)el.style.width=pct+"%";
+},{passive:true});
+
+
+const initialPackage=document.querySelector('.pkg');
+if(initialPackage) selectPkg(initialPackage);
+updateCurrencyDisplay();
+</script>
+</body>
+</html>
